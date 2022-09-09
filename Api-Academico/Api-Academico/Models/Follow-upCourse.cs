@@ -8,7 +8,19 @@ namespace Api_Academico.Models
 {
     public class Follow_upCourse
     {
+        [Key]
        public int Id { get; set; }
         public DateTime DateFollowUp { get; set; }
+        [ForeignKey("User")]
+        public int IdUser { get; set; }
+        public virtual User User { get; set; }
+
+        [ForeignKey("Grade")]
+        public int IdGrade { get; set; }
+        public virtual Grade Grade { get; set; }
+
+
+
+
     }
 }

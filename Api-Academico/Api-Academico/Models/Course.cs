@@ -8,6 +8,7 @@ namespace Api_Academico.Models
 {
     public class Course
     {
+        [Key]
         public int Id { get; set; }
         public string NameCourse { get; set; }
         public int WeeklyHours { get; set;}

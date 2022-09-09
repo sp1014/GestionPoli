@@ -21,6 +21,7 @@ namespace Api_Academico
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("https://*:44394");
                 });
     }
 }

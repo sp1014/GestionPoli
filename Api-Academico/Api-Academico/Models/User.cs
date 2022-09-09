@@ -17,8 +17,11 @@ namespace Api_Academico.Models
         public string TypeDoc { get; set; }
         public string Doc { get; set; }
         public bool Status { get; set; }
+        
         [ForeignKey("Rol")]
         public int IdRol { get; set; }
-        public virtual Roles Rol { get; set; }
+       public virtual Roles Roles { get; set; }
+     //   public virtual ICollection<Roles> Roles { get; set; }
+
     }
 }
