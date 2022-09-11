@@ -13,6 +13,7 @@ namespace ApiUsers.Data
             : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<Rol> Roles { get; set; }
+        public DbSet<TypeDoc> TypeDocs { get; set; }
         public DbSet<AllocationLoad> AllocationLoads { get; set; }
         public DbSet<Califications> Califications { get; set; }
         public DbSet<Course> Courses { get; set; }

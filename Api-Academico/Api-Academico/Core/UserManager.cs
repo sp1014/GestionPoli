@@ -24,7 +24,7 @@ namespace ApiUsers.Core.UserManager
         public async Task<ResultHelper<IEnumerable<User>>> GetUsersAsync()
         {
             var resultado = new ResultHelper<IEnumerable<User>>();
-            var users = await _context.Users.Include(s => s.Rol).ToListAsync();
+            var users = await _context.Users.Include(s => s.Rol).Include(s => s.TypeDoc).ToListAsync();
 
             if (users.Count > 0)
             {
@@ -65,10 +65,10 @@ namespace ApiUsers.Core.UserManager
                     LastName = user.LastName,
                     Email = user.Email,
                     Password = Encrypt.GetSHA256(user.Password),
-                    TypeDoc = user.TypeDoc,
                     Doc=user.Doc,
                     Status=user.Status,
                     IdRol = user.IdRol,
+                    IdTypeDoc = user.IdTypeDoc,
 
                 };
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_Academico.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20220911023842_initial")]
-    partial class initial
+    [Migration("20220911160232_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -203,6 +203,21 @@ namespace Api_Academico.Migrations
                     b.ToTable("Schedules");
                 });
 
+            modelBuilder.Entity("Api_Academico.Models.TypeDoc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameTypeDoc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TypeDocs");
+                });
+
             modelBuilder.Entity("Api_Academico.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -219,6 +234,9 @@ namespace Api_Academico.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdTypeDoc")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -231,12 +249,11 @@ namespace Api_Academico.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TypeDoc")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IdRol");
+
+                    b.HasIndex("IdTypeDoc");
 
                     b.ToTable("Users");
                 });
@@ -300,6 +317,12 @@ namespace Api_Academico.Migrations
                     b.HasOne("Api_Academico.Models.Rol", "Rol")
                         .WithMany()
                         .HasForeignKey("IdRol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Api_Academico.Models.TypeDoc", "TypeDoc")
+                        .WithMany()
+                        .HasForeignKey("IdTypeDoc")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
