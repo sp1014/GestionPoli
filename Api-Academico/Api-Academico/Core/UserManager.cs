@@ -95,6 +95,45 @@ namespace ApiUsers.Core.UserManager
             return resultado;
         }
 
+        public async Task<ResultHelper<User>> UpdateAsync(User user, int id)
+        {
+            var resultado = new ResultHelper<User>();
+            try
+            {
+                if (id == user.Id)
+                {
+                    User nuevaUser = new User
+
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        Password = Encrypt.GetSHA256(user.Password),
+                        Doc = user.Doc,
+                        Status = user.Status,
+                        IdRol = user.IdRol,
+                        IdTypeDoc = user.IdTypeDoc,
+
+                    };
+                    _context.Entry(nuevaUser).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    resultado.Value = nuevaUser;
+                }
+                else
+                {
+                    resultado.AddError("El id no coincide con el id del usuario");
+                }
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
+        //Login Sin JWT
         public async Task<ResultHelper<User>> LoginAsync(User user)
         {
             var resultado = new ResultHelper<User>();

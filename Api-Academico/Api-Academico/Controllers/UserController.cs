@@ -60,6 +60,15 @@ namespace Api_Academico.Controllers
             return Ok(result.Errors);
         }
 
-
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, User user)
+        {
+            var result = await _userManager.UpdateAsync(user, id);
+            if (result.Success)
+            {
+                return Ok(result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
     }
     }
