@@ -34,7 +34,7 @@ namespace Api_Academico
             #region Inyeccion de dependencias
             services.AddScoped<IUserManager, UserManager>();
             #endregion
-            services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
+            services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli1")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

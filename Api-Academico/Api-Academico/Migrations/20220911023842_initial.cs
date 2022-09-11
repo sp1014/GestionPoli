@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Api_Academico.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,18 +74,17 @@ namespace Api_Academico.Migrations
                     TypeDoc = table.Column<string>(nullable: true),
                     Doc = table.Column<string>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
-                    IdRol = table.Column<int>(nullable: false),
-                    RolesId = table.Column<int>(nullable: true)
+                    IdRol = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Roles_RolesId",
-                        column: x => x.RolesId,
+                        name: "FK_Users_Roles_IdRol",
+                        column: x => x.IdRol,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,9 +231,9 @@ namespace Api_Academico.Migrations
                 column: "IdAllocationLoad");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_RolesId",
+                name: "IX_Users_IdRol",
                 table: "Users",
-                column: "RolesId");
+                column: "IdRol");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

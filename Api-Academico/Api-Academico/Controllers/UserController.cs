@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using ApiUsers.Core.UserManager;
 using ApiUsers.Data;
+using Api_Academico.Models;
+
 namespace Api_Academico.Controllers
 {
     [Route("api/[controller]")]
@@ -36,8 +38,28 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
-        
+        [HttpPost]
+        public async Task<ActionResult> Post(User user)
+        {
+            var result = await _userManager.CreateAsync(user);
+            if (result.Success)
+            {
+                return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
 
-       
+        [HttpPost("login")]
+        public async Task<ActionResult> PostLogin(User user)
+        {
+            var result = await _userManager.LoginAsync(user);
+            if (result.Success)
+            {
+                return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
+            }
+            return Ok(result.Errors);
+        }
+
+
     }
     }

@@ -20,8 +20,8 @@ namespace Api_Academico.Models
         
         [ForeignKey("Rol")]
         public int IdRol { get; set; }
-       public virtual Roles Roles { get; set; }
-     //   public virtual ICollection<Roles> Roles { get; set; }
+        public virtual Rol Rol { get; set; }
+        //   public virtual ICollection<Roles> Roles { get; set; }
 
     }
 }

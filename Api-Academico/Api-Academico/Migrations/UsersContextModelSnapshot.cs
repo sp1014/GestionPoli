@@ -154,7 +154,7 @@ namespace Api_Academico.Migrations
                     b.ToTable("Lounges");
                 });
 
-            modelBuilder.Entity("Api_Academico.Models.Roles", b =>
+            modelBuilder.Entity("Api_Academico.Models.Rol", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -226,9 +226,6 @@ namespace Api_Academico.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RolesId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -237,7 +234,7 @@ namespace Api_Academico.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RolesId");
+                    b.HasIndex("IdRol");
 
                     b.ToTable("Users");
                 });
@@ -298,9 +295,11 @@ namespace Api_Academico.Migrations
 
             modelBuilder.Entity("Api_Academico.Models.User", b =>
                 {
-                    b.HasOne("Api_Academico.Models.Roles", "Roles")
+                    b.HasOne("Api_Academico.Models.Rol", "Rol")
                         .WithMany()
-                        .HasForeignKey("RolesId");
+                        .HasForeignKey("IdRol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
