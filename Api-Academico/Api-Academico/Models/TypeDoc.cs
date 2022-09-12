@@ -6,13 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace Api_Academico.Models
 {
-    public class Roles
+    public class TypeDoc
     {
         [Key]
         public int Id { get; set; }
-        public string NameRole { get; set; }
+        public string NameTypeDoc { get; set; }
     }
 }
-
-
-

@@ -154,7 +154,7 @@ namespace Api_Academico.Migrations
                     b.ToTable("Lounges");
                 });
 
-            modelBuilder.Entity("Api_Academico.Models.Roles", b =>
+            modelBuilder.Entity("Api_Academico.Models.Rol", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,6 +201,21 @@ namespace Api_Academico.Migrations
                     b.ToTable("Schedules");
                 });
 
+            modelBuilder.Entity("Api_Academico.Models.TypeDoc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameTypeDoc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TypeDocs");
+                });
+
             modelBuilder.Entity("Api_Academico.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -217,6 +232,9 @@ namespace Api_Academico.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdTypeDoc")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -226,18 +244,14 @@ namespace Api_Academico.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RolesId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TypeDoc")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("RolesId");
+                    b.HasIndex("IdRol");
+
+                    b.HasIndex("IdTypeDoc");
 
                     b.ToTable("Users");
                 });
@@ -298,9 +312,17 @@ namespace Api_Academico.Migrations
 
             modelBuilder.Entity("Api_Academico.Models.User", b =>
                 {
-                    b.HasOne("Api_Academico.Models.Roles", "Roles")
+                    b.HasOne("Api_Academico.Models.Rol", "Rol")
                         .WithMany()
-                        .HasForeignKey("RolesId");
+                        .HasForeignKey("IdRol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Api_Academico.Models.TypeDoc", "TypeDoc")
+                        .WithMany()
+                        .HasForeignKey("IdTypeDoc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

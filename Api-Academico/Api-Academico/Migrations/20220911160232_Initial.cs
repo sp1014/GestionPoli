@@ -62,6 +62,19 @@ namespace Api_Academico.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TypeDocs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameTypeDoc = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypeDocs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -71,21 +84,26 @@ namespace Api_Academico.Migrations
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    TypeDoc = table.Column<string>(nullable: true),
                     Doc = table.Column<string>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
                     IdRol = table.Column<int>(nullable: false),
-                    RolesId = table.Column<int>(nullable: true)
+                    IdTypeDoc = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Roles_RolesId",
-                        column: x => x.RolesId,
+                        name: "FK_Users_Roles_IdRol",
+                        column: x => x.IdRol,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Users_TypeDocs_IdTypeDoc",
+                        column: x => x.IdTypeDoc,
+                        principalTable: "TypeDocs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,9 +250,14 @@ namespace Api_Academico.Migrations
                 column: "IdAllocationLoad");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_RolesId",
+                name: "IX_Users_IdRol",
                 table: "Users",
-                column: "RolesId");
+                column: "IdRol");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_IdTypeDoc",
+                table: "Users",
+                column: "IdTypeDoc");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -265,6 +288,9 @@ namespace Api_Academico.Migrations
 
             migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "TypeDocs");
         }
     }
 }

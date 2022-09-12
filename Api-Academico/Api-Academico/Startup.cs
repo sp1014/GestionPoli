@@ -13,7 +13,8 @@ using System.Threading.Tasks;
 using ApiUsers.Data;
 using Microsoft.EntityFrameworkCore;
 using ApiUsers.Core.UserManager;
-
+using Microsoft.OpenApi.Models;
+using Api_Academico.Core.UserDataManager;
 
 namespace Api_Academico
 {
@@ -33,12 +34,16 @@ namespace Api_Academico
             services.AddControllers();
             #region Inyeccion de dependencias
             services.AddScoped<IUserManager, UserManager>();
+            services.AddScoped<IUserDataManager, UserDataManager>();
             #endregion
             services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestion Academica", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,16 @@ namespace Api_Academico
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

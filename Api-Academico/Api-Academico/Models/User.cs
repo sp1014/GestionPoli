@@ -14,14 +14,17 @@ namespace Api_Academico.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string TypeDoc { get; set; }
         public string Doc { get; set; }
         public bool Status { get; set; }
         
         [ForeignKey("Rol")]
         public int IdRol { get; set; }
-       public virtual Roles Roles { get; set; }
-     //   public virtual ICollection<Roles> Roles { get; set; }
+        public virtual Rol Rol { get; set; }
+
+        [ForeignKey("TypeDoc")]
+        public int IdTypeDoc { get; set; }
+        public virtual TypeDoc TypeDoc { get; set; }
+        //   public virtual ICollection<Roles> Roles { get; set; }
 
     }
 }
