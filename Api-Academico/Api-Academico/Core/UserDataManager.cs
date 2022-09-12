@@ -143,6 +143,57 @@ namespace Api_Academico.Core.UserDataManager
             }
             return resultado;
         }
+
+        public async Task<ResultHelper<TypeDoc>> CreateDocAsync(TypeDoc typedoc)
+        {
+            var resultado = new ResultHelper<TypeDoc>();
+            try
+            {
+                TypeDoc nuevaDoc = new TypeDoc
+
+                {
+                    NameTypeDoc = typedoc.NameTypeDoc,
+                };
+                _context.TypeDocs.Add(nuevaDoc);
+                await _context.SaveChangesAsync();
+                resultado.Value = nuevaDoc;
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
+        public async Task<ResultHelper<TypeDoc>> UpdateDocAsync(TypeDoc typedoc, int id)
+        {
+            var resultado = new ResultHelper<TypeDoc>();
+            try
+            {
+                if (id == typedoc.Id)
+                {
+                    TypeDoc nuevoDoc = new TypeDoc
+
+                    {
+                        Id = typedoc.Id,
+                        NameTypeDoc = typedoc.NameTypeDoc,
+                    };
+                    _context.Entry(nuevoDoc).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    resultado.Value = nuevoDoc;
+                }
+                else
+                {
+                    resultado.AddError("El id no coincide con el id del Doc");
+                }
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
     }
 
     }

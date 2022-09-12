@@ -14,7 +14,9 @@ namespace Api_Academico.Core.UserDataManager
 
         Task<ResultHelper<IEnumerable<TypeDoc>>> GetUsersDocAsync();
         Task<ResultHelper<TypeDoc>> GetByIdDocAsync(int id);
-
+        Task<ResultHelper<TypeDoc>> CreateDocAsync(TypeDoc typeDoc);
+        Task<ResultHelper<TypeDoc>> UpdateDocAsync(TypeDoc typeDoc, int id);
+        
         // Task<ResultHelper<User>> LoginAsync(User user);
         //Task<ResultHelper<User>> UpdateAsync(User user, int id);
         // Task<ResultHelper<User>> GetByIdListAsync(int id);

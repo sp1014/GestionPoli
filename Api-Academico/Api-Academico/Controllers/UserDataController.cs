@@ -83,5 +83,27 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
+
+        [HttpPost("Doc")]
+        public async Task<ActionResult> PostDoc(TypeDoc typedoc)
+        {
+            var result = await _userDataManager.CreateDocAsync(typedoc);
+            if (result.Success)
+            {
+                return CreatedAtAction(nameof(GetByIdDoc), new { id = result.Value.Id }, result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
+
+        [HttpPut("Doc/{id}")]
+        public async Task<ActionResult> PutDoc(int id, TypeDoc typedoc)
+        {
+            var result = await _userDataManager.UpdateDocAsync(typedoc, id);
+            if (result.Success)
+            {
+                return Ok(result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
     }
 }
