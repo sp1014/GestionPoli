@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using ApiUsers.Core.UserManager;
 using Microsoft.OpenApi.Models;
 using Api_Academico.Core.UserDataManager;
+using Api_Academico.Core.LoginManager;
 
 namespace Api_Academico
 {
@@ -35,6 +36,7 @@ namespace Api_Academico
             #region Inyeccion de dependencias
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<IUserDataManager, UserDataManager>();
+            services.AddScoped<ILoginManager, LoginManager>();
             #endregion
             services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.

@@ -49,16 +49,6 @@ namespace Api_Academico.Controllers
             return BadRequest(result.Errors);
         }
 
-        [HttpPost("login")]
-        public async Task<ActionResult> PostLogin(User user)
-        {
-            var result = await _userManager.LoginAsync(user);
-            if (result.Success)
-            {
-                return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
-            }
-            return Ok(result.Errors);
-        }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, User user)

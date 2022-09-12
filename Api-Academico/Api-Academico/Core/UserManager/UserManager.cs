@@ -40,7 +40,7 @@ namespace ApiUsers.Core.UserManager
         public async Task<ResultHelper<User>> GetByIdAsync(int id)
         {
             var resultado = new ResultHelper<User>();
-            var user = await _context.Users.FirstOrDefaultAsync(s => s.Id == id);
+            var user = await _context.Users.Include(s => s.Rol).Include(s => s.TypeDoc).FirstOrDefaultAsync(s => s.Id == id);
             if (user != null)
             {
                 resultado.Value = user;
@@ -134,40 +134,7 @@ namespace ApiUsers.Core.UserManager
         }
 
         //Login Sin JWT
-        public async Task<ResultHelper<User>> LoginAsync(User user)
-        {
-            var resultado = new ResultHelper<User>();
-
-            try
-            {
-                User nuevaUser = new User
-                {
-
-                    Email = user.Email,
-                    Password = user.Password = Encrypt.GetSHA256(user.Password)
-
-                };
-                var vali = (from d in _context.Users
-                            where d.Email == user.Email && d.Password == user.Password
-                            select d).FirstOrDefault();
-                if (vali != null)
-                {
-                    _context.Users.Add(nuevaUser);
-
-                    resultado.Value = vali;
-                }
-                else
-                {
-                    string error = _ERROR_EMAIL;
-                    resultado.AddError(error);
-                }
-            }
-            catch (Exception e)
-            {
-                resultado.AddError(e.Message);
-            }
-            return resultado;
-        }
+       
 
 
     }
