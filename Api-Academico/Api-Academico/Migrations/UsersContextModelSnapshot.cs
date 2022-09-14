@@ -29,6 +29,9 @@ namespace Api_Academico.Migrations
                     b.Property<DateTime>("DateAllocationLoad")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdCalifications")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdCourse")
                         .HasColumnType("int");
 
@@ -39,6 +42,8 @@ namespace Api_Academico.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdCalifications");
 
                     b.HasIndex("IdCourse");
 
@@ -68,12 +73,7 @@ namespace Api_Academico.Migrations
                     b.Property<int>("CalificationFinal")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdAllocationLoad")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("IdAllocationLoad");
 
                     b.ToTable("Califications");
                 });
@@ -258,6 +258,12 @@ namespace Api_Academico.Migrations
 
             modelBuilder.Entity("Api_Academico.Models.AllocationLoad", b =>
                 {
+                    b.HasOne("Api_Academico.Models.Califications", "Califications")
+                        .WithMany()
+                        .HasForeignKey("IdCalifications")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Api_Academico.Models.Course", "Course")
                         .WithMany()
                         .HasForeignKey("IdCourse")
@@ -273,15 +279,6 @@ namespace Api_Academico.Migrations
                     b.HasOne("Api_Academico.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Api_Academico.Models.Califications", b =>
-                {
-                    b.HasOne("Api_Academico.Models.AllocationLoad", "AllocationLoad")
-                        .WithMany()
-                        .HasForeignKey("IdAllocationLoad")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

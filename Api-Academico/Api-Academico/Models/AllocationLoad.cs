@@ -23,5 +23,10 @@ namespace Api_Academico.Models
         [ForeignKey("Grade")]
         public int IdGrade { get; set; }
         public virtual Grade Grade { get; set; }
+
+        [ForeignKey("Califications")]
+        public int IdCalifications { get; set; }
+        public virtual Califications Califications { get; set; }
+
     }
 }

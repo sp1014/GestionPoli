@@ -8,6 +8,22 @@ namespace Api_Academico.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Califications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Calification1 = table.Column<int>(nullable: false),
+                    Calification2 = table.Column<int>(nullable: false),
+                    Calification3 = table.Column<int>(nullable: false),
+                    CalificationFinal = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Califications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
@@ -115,11 +131,18 @@ namespace Api_Academico.Migrations
                     DateAllocationLoad = table.Column<DateTime>(nullable: false),
                     IdCourse = table.Column<int>(nullable: false),
                     IdUser = table.Column<int>(nullable: false),
-                    IdGrade = table.Column<int>(nullable: false)
+                    IdGrade = table.Column<int>(nullable: false),
+                    IdCalifications = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AllocationLoads", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AllocationLoads_Califications_IdCalifications",
+                        column: x => x.IdCalifications,
+                        principalTable: "Califications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AllocationLoads_Courses_IdCourse",
                         column: x => x.IdCourse,
@@ -168,29 +191,6 @@ namespace Api_Academico.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Califications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Calification1 = table.Column<int>(nullable: false),
-                    Calification2 = table.Column<int>(nullable: false),
-                    Calification3 = table.Column<int>(nullable: false),
-                    CalificationFinal = table.Column<int>(nullable: false),
-                    IdAllocationLoad = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Califications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Califications_AllocationLoads_IdAllocationLoad",
-                        column: x => x.IdAllocationLoad,
-                        principalTable: "AllocationLoads",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Schedules",
                 columns: table => new
                 {
@@ -215,6 +215,11 @@ namespace Api_Academico.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AllocationLoads_IdCalifications",
+                table: "AllocationLoads",
+                column: "IdCalifications");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AllocationLoads_IdCourse",
                 table: "AllocationLoads",
                 column: "IdCourse");
@@ -228,11 +233,6 @@ namespace Api_Academico.Migrations
                 name: "IX_AllocationLoads_IdUser",
                 table: "AllocationLoads",
                 column: "IdUser");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Califications_IdAllocationLoad",
-                table: "Califications",
-                column: "IdAllocationLoad");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Follow_up_courses_IdGrade",
@@ -263,9 +263,6 @@ namespace Api_Academico.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Califications");
-
-            migrationBuilder.DropTable(
                 name: "Follow_up_courses");
 
             migrationBuilder.DropTable(
@@ -276,6 +273,9 @@ namespace Api_Academico.Migrations
 
             migrationBuilder.DropTable(
                 name: "AllocationLoads");
+
+            migrationBuilder.DropTable(
+                name: "Califications");
 
             migrationBuilder.DropTable(
                 name: "Courses");

@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Api_Academico.Core.CalificationsManager
 {
-   
+
 
     public class CalificacionManager : ICalificacionManager
     {
@@ -26,7 +26,7 @@ namespace Api_Academico.Core.CalificationsManager
         public async Task<ResultHelper<IEnumerable<Califications>>> GetCalificationsAsync()
         {
             var resultado = new ResultHelper<IEnumerable<Califications>>();
-            var nots = await _context.Califications.Include(s => s.AllocationLoad.User).Include(s => s.AllocationLoad.Course).Include(s => s.AllocationLoad.Grade).ToListAsync();
+            var nots = await _context.Califications.ToListAsync();
 
             if (nots.Count > 0)
             {
@@ -42,7 +42,7 @@ namespace Api_Academico.Core.CalificationsManager
         public async Task<ResultHelper<Califications>> GetByIdAsync(int id)
         {
             var resultado = new ResultHelper<Califications>();
-            var nots = await _context.Califications.Include(s => s.AllocationLoad.User).Include(s => s.AllocationLoad.Course).Include(s => s.AllocationLoad.Grade).FirstOrDefaultAsync(s => s.Id == id);
+            var nots = await _context.Califications.FirstOrDefaultAsync(s => s.Id == id);
             if (nots != null)
             {
                 resultado.Value = nots;
@@ -55,4 +55,4 @@ namespace Api_Academico.Core.CalificationsManager
             return resultado;
         }
     }
-    }
+}

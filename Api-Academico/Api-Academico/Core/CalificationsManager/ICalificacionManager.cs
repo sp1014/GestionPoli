@@ -6,7 +6,7 @@ namespace Api_Academico.Core.CalificationsManager
 {
     public interface ICalificacionManager
     {
-        
+
         Task<ResultHelper<IEnumerable<Califications>>> GetCalificationsAsync();
         Task<ResultHelper<Califications>> GetByIdAsync(int id);
     }

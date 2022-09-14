@@ -16,8 +16,9 @@ using ApiUsers.Core.UserManager;
 using Microsoft.OpenApi.Models;
 using Api_Academico.Core.UserDataManager;
 using Api_Academico.Core.LoginManager;
-using Api_Academico.Core.CalificationsManager;
 using Api_Academico.Core.CourseManager;
+using Api_Academico.Core.AllocationLoadManager;
+using Api_Academico.Core.CalificationsManager;
 
 namespace Api_Academico
 {
@@ -39,8 +40,9 @@ namespace Api_Academico
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<IUserDataManager, UserDataManager>();
             services.AddScoped<ILoginManager, LoginManager>();
-            services.AddScoped<ICalificacionManager, CalificacionManager>();
             services.AddScoped<ICourseManager, CourseManager>();
+            services.AddScoped<ICalificacionManager, CalificacionManager>();
+            services.AddScoped<IAllocationLoadManager, AllocationLoadManager>();
             #endregion
             services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.

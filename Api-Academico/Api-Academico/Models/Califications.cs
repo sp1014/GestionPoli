@@ -15,10 +15,5 @@ namespace Api_Academico.Models
         public int Calification3 { get; set; }
         public int CalificationFinal { get; set; }
 
-        [ForeignKey("AllocationLoad")]
-        public int IdAllocationLoad { get; set; }
-        public virtual AllocationLoad AllocationLoad { get; set; }
-  
-
     }
 }
