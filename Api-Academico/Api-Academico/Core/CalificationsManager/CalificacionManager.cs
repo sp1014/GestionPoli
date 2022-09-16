@@ -54,5 +54,66 @@ namespace Api_Academico.Core.CalificationsManager
             }
             return resultado;
         }
+
+        public async Task<ResultHelper<Califications>> CreateCalificationsAsync(Califications califications)
+        {
+            var resultado = new ResultHelper<Califications>();
+            try
+            {
+                Califications nuevaCalification = new Califications
+
+                {
+                    Calification1 = califications.Calification1,
+                    Calification2 = califications.Calification2,
+                    Calification3 = califications.Calification3,
+                    CalificationFinal = (califications.Calification1+califications.Calification2+califications.Calification3)/3,
+              
+
+                };                      
+                    _context.Califications.Add(nuevaCalification);
+                    await _context.SaveChangesAsync();
+                    resultado.Value = nuevaCalification;
+                
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
+        public async Task<ResultHelper<Califications>> UpdateCalificationsAsync(Califications califications, int id)
+        {
+            var resultado = new ResultHelper<Califications>();
+            try
+            {
+                if (id == califications.Id)
+                {
+                    Califications nuevaUser = new Califications
+
+                    {
+                        Id = califications.Id,
+                        Calification1 = califications.Calification1,
+                        Calification2 = califications.Calification2,
+                        Calification3 = califications.Calification3,
+                        CalificationFinal = (califications.Calification1 + califications.Calification2 + califications.Calification3) / 3,
+
+                    };
+                    _context.Entry(nuevaUser).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    resultado.Value = nuevaUser;
+                }
+                else
+                {
+                    resultado.AddError("El id no coincide con el id del usuario");
+                }
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
     }
 }

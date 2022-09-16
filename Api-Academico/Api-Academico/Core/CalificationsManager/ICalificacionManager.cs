@@ -9,5 +9,7 @@ namespace Api_Academico.Core.CalificationsManager
 
         Task<ResultHelper<IEnumerable<Califications>>> GetCalificationsAsync();
         Task<ResultHelper<Califications>> GetByIdAsync(int id);
+        Task<ResultHelper<Califications>> CreateCalificationsAsync(Califications califications);
+        Task<ResultHelper<Califications>> UpdateCalificationsAsync(Califications califications, int id);
     }
 }

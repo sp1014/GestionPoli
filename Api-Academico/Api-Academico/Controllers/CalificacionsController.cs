@@ -6,6 +6,7 @@ using ApiUsers.Data;
 using Api_Academico.Models;
 using Api_Academico.Core.LoginManager;
 using Api_Academico.Core.CalificationsManager;
+using Microsoft.AspNetCore.Identity;
 
 namespace Api_Academico.Controllers
 {
@@ -40,6 +41,29 @@ namespace Api_Academico.Controllers
                 return Ok(ordenResult.Value);
             }
             return NotFound(ordenResult.Errors);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post(Califications califications)
+        {
+            var result = await _calificacionManager.CreateCalificationsAsync(califications);
+            if (result.Success)
+            {
+                return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, Califications califications)
+        {
+            var result = await _calificacionManager.UpdateCalificationsAsync(califications, id);
+            if (result.Success)
+            {
+                return Ok(result.Value);
+            }
+            return BadRequest(result.Errors);
         }
     }
 }
