@@ -133,9 +133,5 @@ namespace ApiUsers.Core.UserManager
             return resultado;
         }
 
-        //Login Sin JWT
-       
-
-
     }
 }

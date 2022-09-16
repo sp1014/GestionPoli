@@ -53,6 +53,61 @@ namespace Api_Academico.Core.CourseManager
             }
             return resultado;
         }
+
+        public async Task<ResultHelper<Course>> CreateCourseAsync(Course course)
+        {
+            var resultado = new ResultHelper<Course>();
+            try
+            {
+                Course nuevoCourse = new Course
+                {
+                    NameCourse = course.NameCourse,
+                    WeeklyHours = course.WeeklyHours,
+                    Status = course.Status,
+                };
+                _context.Courses.Add(nuevoCourse);
+                await _context.SaveChangesAsync();
+                resultado.Value = nuevoCourse;
+
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
+        public async Task<ResultHelper<Course>> UpdateCourseAsync(Course course, int id)
+        {
+            var resultado = new ResultHelper<Course>();
+            try
+            {
+                if (id == course.Id)
+                {
+                    Course nuevaUser = new Course
+
+                    {
+                        Id = course.Id,
+                        NameCourse = course.NameCourse,
+                        WeeklyHours = course.WeeklyHours,
+                        Status = course.Status,
+                    };
+                    _context.Entry(nuevaUser).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    resultado.Value = nuevaUser;
+                }
+                else
+                {
+                    resultado.AddError("El id no coincide con el id");
+                }
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
     }
 }
 

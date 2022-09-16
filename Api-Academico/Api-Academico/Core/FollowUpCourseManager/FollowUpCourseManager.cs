@@ -54,6 +54,63 @@ namespace Api_Academico.Core.FollowUpCourseManager
             return resultado;
         }
 
+        public async Task<ResultHelper<Follow_upCourse>> CreateFollow_upCourseAsync(Follow_upCourse follow_upCourse)
+        {
+            var resultado = new ResultHelper<Follow_upCourse>();
+            try
+            {
+                Follow_upCourse nuevaCalification = new Follow_upCourse
+
+                {
+                    DateFollowUp = follow_upCourse.DateFollowUp,
+                    IdUser = follow_upCourse.IdUser,
+                    IdGrade = follow_upCourse.IdGrade    
+                };
+                _context.Follow_up_courses.Add(nuevaCalification);
+                await _context.SaveChangesAsync();
+                resultado.Value = nuevaCalification;
+
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
+        public async Task<ResultHelper<Follow_upCourse>> UpdatFollow_upCourseAsync(Follow_upCourse follow_upCourse, int id)
+        {
+            var resultado = new ResultHelper<Follow_upCourse>();
+            try
+            {
+                if (id == follow_upCourse.Id)
+                {
+                    Follow_upCourse nuevaUser = new Follow_upCourse
+
+                    {
+                        Id = follow_upCourse.Id,
+                        DateFollowUp = follow_upCourse.DateFollowUp,
+                        IdUser = follow_upCourse.IdUser,
+                        IdGrade = follow_upCourse.IdGrade
+
+                    };
+                    _context.Entry(nuevaUser).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    resultado.Value = nuevaUser;
+                }
+                else
+                {
+                    resultado.AddError("El id no coincide con el id del usuario");
+                }
+            }
+            catch (Exception e)
+            {
+                resultado.AddError(e.Message);
+            }
+            return resultado;
+        }
+
     }
 }
 

@@ -8,6 +8,8 @@ namespace Api_Academico.Core.CourseManager
     {
         Task<ResultHelper<IEnumerable<Course>>> GetCourseAsync();
         Task<ResultHelper<Course>> GetByIdAsync(int id);
+        Task<ResultHelper<Course>> CreateCourseAsync(Course course);
+        Task<ResultHelper<Course>> UpdateCourseAsync(Course course, int id);
     }
 }
 

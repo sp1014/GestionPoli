@@ -12,5 +12,6 @@ namespace Api_Academico.Models
         public int Id { get; set; }
         public string NameCourse { get; set; }
         public int WeeklyHours { get; set;}
+        public bool Status { get; set; }
     }
 }

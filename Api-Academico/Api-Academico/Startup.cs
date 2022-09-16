@@ -20,6 +20,8 @@ using Api_Academico.Core.CourseManager;
 using Api_Academico.Core.AllocationLoadManager;
 using Api_Academico.Core.CalificationsManager;
 using Api_Academico.Core.FollowUpCourseManager;
+using Api_Academico.Core.ScheduleManager;
+using Api_Academico.Core.GradeManager;
 
 namespace Api_Academico
 {
@@ -45,6 +47,8 @@ namespace Api_Academico
             services.AddScoped<ICalificacionManager, CalificacionManager>();
             services.AddScoped<IAllocationLoadManager, AllocationLoadManager>();
             services.AddScoped<IFollowUpCourseManager, FollowUpCourseManager>();
+            services.AddScoped<IScheduleManager, ScheduleManager>();
+            services.AddScoped<IGradeManager, GradeManager>();
             #endregion
             services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.

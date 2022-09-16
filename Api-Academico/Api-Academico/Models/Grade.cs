@@ -7,5 +7,6 @@ namespace Api_Academico.Models
         [Key]
         public int Id { get; set; }
         public string CodGrade { get; set; }
+        public bool Status { get; set; }
     }
 }

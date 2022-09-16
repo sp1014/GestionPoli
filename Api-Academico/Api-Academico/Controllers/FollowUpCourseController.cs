@@ -39,6 +39,29 @@ namespace Api_Academico.Controllers
             return NotFound(ordenResult.Errors);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Post(Follow_upCourse follow_upCourse)
+        {
+            var result = await _followUpCourseManager.CreateFollow_upCourseAsync(follow_upCourse);
+            if (result.Success)
+            {
+                return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, Follow_upCourse follow_upCourse)
+        {
+            var result = await _followUpCourseManager.UpdatFollow_upCourseAsync(follow_upCourse, id);
+            if (result.Success)
+            {
+                return Ok(result.Value);
+            }
+            return BadRequest(result.Errors);
+        }
+
     }
 }
 
