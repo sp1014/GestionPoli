@@ -6,9 +6,11 @@ using ApiUsers.Data;
 using Api_Academico.Models;
 using Api_Academico.Core.FollowUpCourseManager;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Academico.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FollowUpCourseController : ControllerBase
@@ -18,6 +20,7 @@ namespace Api_Academico.Controllers
         {
             _followUpCourseManager = followUpCourseManager;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -28,6 +31,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(usersResult.Errors);
         }
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {

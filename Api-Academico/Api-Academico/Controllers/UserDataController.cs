@@ -5,9 +5,11 @@ using ApiUsers.Core.UserManager;
 using ApiUsers.Data;
 using Api_Academico.Models;
 using Api_Academico.Core.UserDataManager;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Academico.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserDataController : ControllerBase
@@ -17,6 +19,7 @@ namespace Api_Academico.Controllers
         {
             _userDataManager = userManager;
         }
+        [AllowAnonymous]
 
         [HttpGet ("Rol")]
         public async Task<ActionResult> GetAll()
@@ -28,6 +31,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(usersResult.Errors);
         }
+        [AllowAnonymous]
         [HttpGet("Rol/{id}")]
         public async Task<ActionResult> GetById(int id)
         {
@@ -62,7 +66,7 @@ namespace Api_Academico.Controllers
 
 
         // Type Doc
-
+        [AllowAnonymous]
         [HttpGet("Doc")]
         public async Task<ActionResult> GetAllDoc()
         {
@@ -73,6 +77,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(usersResult.Errors);
         }
+        [AllowAnonymous]
         [HttpGet("Doc/{id}")]
         public async Task<ActionResult> GetByIdDoc(int id)
         {

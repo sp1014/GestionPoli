@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CQS9dwKSyfooVMRUzxt6Jzgacg0bIdtjfc8dVZlnfTXzAaXiNrVQVJXGyTnb578aON7g+CBgO/0BesaqxZZjMw==",
+  "dgSpecHash": "6AWsRtdySV1T7Gf7MUxT1bTPSZ6debOQ64npbjLMM4af3fpB4d0+ngdubBXJC+yOo4XKAkN/1xfkmH7K9yKAWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Desktop\\GestionPoli\\Api-Academico\\Api-Academico\\Api-Academico.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.7\\microsoft.aspnetcore.authentication.jwtbearer.3.1.7.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.7\\microsoft.aspnetcore.jsonpatch.3.1.7.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.7\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.7.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

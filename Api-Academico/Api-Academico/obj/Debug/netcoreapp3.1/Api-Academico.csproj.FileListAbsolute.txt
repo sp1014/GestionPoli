@@ -67,3 +67,4 @@ C:\Users\user\Desktop\GestionPoli\Api-Academico\Api-Academico\bin\Debug\netcorea
 C:\Users\user\Desktop\GestionPoli\Api-Academico\Api-Academico\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user\Desktop\GestionPoli\Api-Academico\Api-Academico\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\user\Desktop\GestionPoli\Api-Academico\Api-Academico\obj\Debug\netcoreapp3.1\Api-Academico.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\Desktop\GestionPoli\Api-Academico\Api-Academico\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

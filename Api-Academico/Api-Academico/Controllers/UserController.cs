@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using ApiUsers.Core.UserManager;
 using ApiUsers.Data;
 using Api_Academico.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Academico.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -18,6 +20,7 @@ namespace Api_Academico.Controllers
         {
             _userManager = userManager;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -28,6 +31,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(usersResult.Errors);
         }
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {

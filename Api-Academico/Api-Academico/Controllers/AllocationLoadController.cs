@@ -6,9 +6,11 @@ using ApiUsers.Data;
 using Api_Academico.Models;
 using Api_Academico.Core.AllocationLoadManager;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Academico.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AllocationLoadController : ControllerBase
@@ -20,7 +22,7 @@ namespace Api_Academico.Controllers
         {
             _allocationLoadManager = allocationLoadManager;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -31,6 +33,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(usersResult.Errors);
         }
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
