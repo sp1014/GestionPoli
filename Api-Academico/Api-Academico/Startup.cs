@@ -56,9 +56,6 @@ namespace Api_Academico
                     ValidateAudience = false
                 };
             });
-
-            services.AddCors();
-            services.AddControllers();
             #region Inyeccion de dependencias
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<IUserDataManager, UserDataManager>();
@@ -70,6 +67,10 @@ namespace Api_Academico
             services.AddScoped<IScheduleManager, ScheduleManager>();
             services.AddScoped<IGradeManager, GradeManager>();
             #endregion
+
+            services.AddCors();
+            services.AddControllers();
+
             services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("GestionPoli")));
             //This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
             services.AddControllers().AddNewtonsoftJson(options =>
