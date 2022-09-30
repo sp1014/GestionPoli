@@ -1,0 +1,61 @@
+{
+  "name": "vue-gallery",
+  "version": "2.0.1",
+  "description": "VueJS responsive and customizable image and video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers.",
+  "main": "dist/js/vue-gallery.js",
+  "jsnext:main": "src/index.js",
+  "unpkg": "dist/js/vue-gallery.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node_modules/.bin/eslint ./",
+    "build": "NODE_ENV=production node_modules/.bin/rollup -c ./build/rollup.config.js && NODE_ENV=production BUILD_MODE=minify node_modules/.bin/rollup -c ./build/rollup.config.js",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
+    "postinstall": "opencollective-postinstall || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinCK/vue-gallery.git"
+  },
+  "author": "Igor Ognichenko <ognichenko.igor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobinCK/vue-gallery/issues"
+  },
+  "homepage": "https://github.com/RobinCK/vue-gallery#readme",
+  "keywords": [
+    "vue-gallery",
+    "vuejs-gallery",
+    "vue",
+    "vuejs",
+    "gallery",
+    "images",
+    "pictures",
+    "carousel",
+    "slider",
+    "mobile",
+    "touch",
+    "vue-plugin",
+    "vue-component"
+  ],
+  "dependencies": {
+    "blueimp-gallery": "^2.33.0",
+    "opencollective-postinstall": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "eslint": "^5.13.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-vue": "4.7.1",
+    "vue-template-compiler": "^2.6.4"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/vue-gallery"
+  }
+}

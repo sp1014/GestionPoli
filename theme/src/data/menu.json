@@ -1,0 +1,236 @@
+{
+  "data": [
+    {
+      "title": "Dashboard",
+      "icon": "home",
+      "type": "sub",
+      "badgeType": "light-primary",
+      "badgeValue": "2",
+      "active": false,
+      "children": [
+        {
+          "path": "/dashboard/default",
+          "title": "Default",
+          "type": "link"
+        }
+      ]
+    },
+   
+    {
+      "path": "/app/calendar",
+      "title": "Calendar",
+      "icon": "calendar",
+      "type": "link",
+      "bookmark": true
+    },
+
+    {
+      "title": "Forms",
+      "icon": "file-text",
+      "type": "sub",
+      "active": false,
+      "children": [
+        {
+          "title": "Form Controls",
+          "type": "sub",
+          "active": false,
+          "children": [
+            {
+              "path": "/form/validation",
+              "title": "Form Validation",
+              "type": "link"
+            },
+            {
+              "path": "/form/inputs",
+              "title": "Base Inputs",
+              "type": "link"
+            },
+            {
+              "path": "/form/checkbox-radio",
+              "title": "Checkbox & Radio",
+              "type": "link"
+            },
+            {
+              "path": "/form/input-groups",
+              "title": "Input Groups",
+              "type": "link"
+            },
+            {
+              "path": "/form/mega-options",
+              "title": "Mega Options",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "title": "Form Widgets",
+          "type": "sub",
+          "active": false,
+          "children": [
+            {
+              "path": "/form/datepicker",
+              "title": "Datepicker",
+              "type": "link"
+            },
+            {
+              "path": "/form/select2",
+              "title": "Select2",
+              "type": "link"
+            },
+            {
+              "path": "/form/switch",
+              "title": "Switch",
+              "type": "link"
+            },
+            {
+              "path": "/form/touchspin",
+              "title": "Touchspin",
+              "type": "link"
+            },
+            {
+              "path": "/form/typeahead",
+              "title": "Typeahead",
+              "type": "link"
+            },
+            {
+              "path": "/form/clipboard",
+              "title": "Clipboard",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "path": "/form/wizard",
+          "title": "Form Wizard",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "title": "Tables",
+      "icon": "server",
+      "type": "sub",
+      "active": false,
+      "children": [
+        {
+          "title": "Bootstrap Tables",
+          "type": "sub",
+          "active": false,
+          "children": [
+            {
+              "path": "/table/basic",
+              "title": "Basic Tables",
+              "type": "link"
+            },
+            {
+              "path": "/table/sizing",
+              "title": "Sizing Tables",
+              "type": "link"
+            },
+            {
+              "path": "/table/border",
+              "title": "Border Tables",
+              "type": "link"
+            },
+            {
+              "path": "/table/styling",
+              "title": "Styling Tables",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "title": "Data Tables",
+          "type": "sub",
+          "active": false,
+          "children": [
+            {
+              "path": "/datatable-basic",
+              "title": "Basic Init",
+              "type": "link"
+            },
+            {
+              "path": "/datatable-select-delete",
+              "title": "Select Delete",
+              "type": "link"
+            },
+            {
+              "path": "/filter-table",
+              "title": "Filter",
+              "type": "link"
+            },
+            {
+              "path": "/datatable-export",
+              "title": "Data Export",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "path": "/table/smarttable",
+          "title": "VueJs Smart Table",
+          "type": "link"
+        }
+      ]
+    },
+    
+    {
+      "title": "Error Page",
+      "icon": "alert-octagon",
+      "type": "sub",
+      "active": false,
+      "children": [
+        {
+          "path": "/error-400",
+          "title": "Error 400",
+          "type": "link"
+        },
+        {
+          "path": "/error-401",
+          "title": "Error 401",
+          "type": "link"
+        },
+        {
+          "path": "/error-403",
+          "title": "Error 403",
+          "type": "link"
+        },
+        {
+          "path": "/error-404",
+          "title": "Error 404",
+          "type": "link"
+        },
+        {
+          "path": "/error-500",
+          "title": "Error 500",
+          "type": "link"
+        },
+        {
+          "path": "/error-503",
+          "title": "Error 503",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "title": "Authentication",
+      "icon": "unlock",
+      "type": "sub",
+      "active": false,
+      "children": [
+        {
+          "path": "/auth/login",
+          "title": "Login Simple",
+          "type": "link"
+        },      
+        {
+          "path": "/auth/register",
+          "title": "Register Simple",
+          "type": "link"
+        }
+        
+      ]
+    }
+  
+  ]
+}

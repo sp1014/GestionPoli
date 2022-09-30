@@ -1,0 +1,14 @@
+{
+    "auth0": {
+        "domain": "pixelstrap.auth0.com",
+        "clientID": "XEGmT1LD43Q0oSxJjiWIb5gFDOuluss4"
+    },
+    "firebase": {
+        "apiKey": "AIzaSyCI9rT4Be1zNfEtEDRggYpjaXQju0VioGw",
+        "authDomain": "dfds-c9246.firebaseapp.com",
+        "databaseURL": "https://dfds-c9246.firebaseio.com",
+        "projectId": "dfds-c9246",
+        "storageBucket": "dfds-c9246.appspot.com",
+        "messagingSenderId": "574319923169"
+    }
+}
