@@ -29,16 +29,9 @@ namespace Api_Academico.Controllers
             config = _config;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id)
-        {
-            var ordenResult = await _loginManager.GetByIdAsync(id);
-            if (ordenResult.Success)
-            {
-                return Ok(ordenResult.Value);
-            }
-            return NotFound(ordenResult.Errors);
-        }
+
+
+
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> PostLogin(User user)
@@ -69,10 +62,16 @@ namespace Api_Academico.Controllers
             return Ok(result.Errors);
         }
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
             var r = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier);
-            return Ok(r == null ? "" : r.Value);
+            var ordenResult = await _loginManager.GetByIdAsync(r.Value);
+            if (ordenResult.Success)
+            {
+                return Ok(ordenResult.Value);
+            }
+            return NotFound(ordenResult.Errors);
+       
         }
     }
 }

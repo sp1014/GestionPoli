@@ -42,6 +42,18 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
+        [AllowAnonymous]
+        [HttpGet("idRol/{idRol}")]
+        public async Task<ActionResult> GetByIdRol(int idRol)
+        {
+            var ordenResult = await _userManager.GetByIdRolAsync(idRol);
+            if (ordenResult.Success)
+            {
+                return Ok(ordenResult.Value);
+            }
+            return NotFound(ordenResult.Errors);
+        }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Post(User user)
         {

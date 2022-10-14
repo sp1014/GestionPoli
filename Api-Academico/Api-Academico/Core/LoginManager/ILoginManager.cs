@@ -8,6 +8,6 @@ namespace Api_Academico.Core.LoginManager
     public interface ILoginManager
     {
         Task<ResultHelper<User>> LoginAsync(User user);
-        Task<ResultHelper<User>> GetByIdAsync(int id);
+        Task<ResultHelper<User>> GetByIdAsync(string email);
     }
 }

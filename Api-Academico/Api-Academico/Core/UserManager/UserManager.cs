@@ -53,6 +53,22 @@ namespace ApiUsers.Core.UserManager
             return resultado;
         }
 
+        public async Task<ResultHelper<IEnumerable<User>>> GetByIdRolAsync(int idRol)
+        {
+            var resultado = new ResultHelper<IEnumerable<User>>();      
+                var user = await _context.Users.Include(s => s.Rol).Include(s => s.TypeDoc).Where(s => s.IdRol == idRol).ToListAsync();
+            if (user != null)
+            {
+                resultado.Value = (IEnumerable<User>)user;
+            }
+            else
+            {
+                string error = _ERROR_USER;
+                resultado.AddError(error);
+            }
+            return resultado;
+        }
+
         public async Task<ResultHelper<User>> CreateAsync(User user)
         {
             var resultado = new ResultHelper<User>();

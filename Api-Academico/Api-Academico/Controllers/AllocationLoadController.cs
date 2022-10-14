@@ -44,7 +44,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Post(AllocationLoad allocationLoad)
         {
