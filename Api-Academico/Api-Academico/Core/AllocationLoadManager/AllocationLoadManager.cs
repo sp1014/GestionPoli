@@ -117,5 +117,21 @@ namespace Api_Academico.Core.AllocationLoadManager
             }
             return resultado;
         }
+
+        public async Task<ResultHelper<IEnumerable<AllocationLoad>>> GetByIdUserAsync(int idUser)
+        {
+            var resultado = new ResultHelper<IEnumerable<AllocationLoad>>();
+            var user = await _context.AllocationLoads.Include(s => s.User).Include(s => s.Course).Include(s => s.Grade).Include(s => s.Califications).Where(s => s.IdUser == idUser).ToListAsync();
+            if (user != null)
+            {
+                resultado.Value = (IEnumerable<AllocationLoad>)user;
+            }
+            else
+            {
+                string error = _ERROR_USER;
+                resultado.AddError(error);
+            }
+            return resultado;
+        }
     }
     }

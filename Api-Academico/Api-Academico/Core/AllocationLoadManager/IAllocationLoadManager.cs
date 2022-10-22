@@ -11,5 +11,6 @@ namespace Api_Academico.Core.AllocationLoadManager
         Task<ResultHelper<AllocationLoad>> GetByIdAsync(int id);
         Task<ResultHelper<AllocationLoad>> CreateAsync(AllocationLoad allocationLoad);
         Task<ResultHelper<AllocationLoad>> UpdateAsync(AllocationLoad allocationLoad, int id);
+        Task<ResultHelper<IEnumerable<AllocationLoad>>> GetByIdUserAsync(int idUser);
     }
 }

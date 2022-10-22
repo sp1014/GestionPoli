@@ -67,6 +67,18 @@ namespace Api_Academico.Controllers
             }
             return BadRequest(result.Errors);
         }
+
+        [AllowAnonymous]
+        [HttpGet("idUser/{idUser}")]
+        public async Task<ActionResult> GetByIdUser(int idUser)
+        {
+            var ordenResult = await _allocationLoadManager.GetByIdUserAsync(idUser);
+            if (ordenResult.Success)
+            {
+                return Ok(ordenResult.Value);
+            }
+            return NotFound(ordenResult.Errors);
+        }
     }
 }
 
