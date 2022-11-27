@@ -42,6 +42,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
+        [AllowAnonymous]
         [HttpPost("Rol")]
         public async Task<ActionResult> Post(Rol rol)
         {
@@ -52,7 +53,7 @@ namespace Api_Academico.Controllers
             }
             return BadRequest(result.Errors);
         }
-
+        [AllowAnonymous]
         [HttpPut("Rol/{id}")]
         public async Task<ActionResult> Put(int id, Rol rol)
         {
@@ -88,7 +89,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
-
+        [AllowAnonymous]
         [HttpPost("Doc")]
         public async Task<ActionResult> PostDoc(TypeDoc typedoc)
         {
@@ -99,7 +100,7 @@ namespace Api_Academico.Controllers
             }
             return BadRequest(result.Errors);
         }
-
+        [AllowAnonymous]
         [HttpPut("Doc/{id}")]
         public async Task<ActionResult> PutDoc(int id, TypeDoc typedoc)
         {

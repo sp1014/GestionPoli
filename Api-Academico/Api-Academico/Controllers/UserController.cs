@@ -65,7 +65,7 @@ namespace Api_Academico.Controllers
             return BadRequest(result.Errors);
         }
 
-
+        [AllowAnonymous]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, User user)
         {

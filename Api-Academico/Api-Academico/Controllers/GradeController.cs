@@ -45,6 +45,7 @@ namespace Api_Academico.Controllers
             }
             return NotFound(ordenResult.Errors);
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Post(Grade grade)
         {
@@ -55,8 +56,7 @@ namespace Api_Academico.Controllers
             }
             return BadRequest(result.Errors);
         }
-
-
+        [AllowAnonymous]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Grade grade)
         {
