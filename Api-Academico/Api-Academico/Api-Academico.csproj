@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220911160232_Initial.cs" />
-    <Compile Remove="Migrations\20220911160232_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220914130959_Califications.cs" />
-    <Compile Remove="Migrations\20220914130959_Califications.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />

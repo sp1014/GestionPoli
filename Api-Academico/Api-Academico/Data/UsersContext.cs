@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace ApiUsers.Data
+namespace Api_Academico.Data
 {
     public class UsersContext : DbContext
     {

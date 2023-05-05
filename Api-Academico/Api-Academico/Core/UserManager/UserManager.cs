@@ -1,14 +1,14 @@
 ﻿using Api_Academico;
 using Api_Academico.Helpers;
 using Api_Academico.Models;
-using ApiUsers.Data;
+using Api_Academico.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace ApiUsers.Core.UserManager
+namespace Api_Academico.Core.UserManager
 {
     public class UserManager : IUserManager
     {

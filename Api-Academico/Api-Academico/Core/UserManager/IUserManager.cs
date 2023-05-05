@@ -3,7 +3,7 @@ using Api_Academico.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ApiUsers.Core.UserManager
+namespace Api_Academico.Core.UserManager
 {
     public interface IUserManager
     {

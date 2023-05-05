@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using ApiUsers.Core.UserManager;
-using ApiUsers.Data;
+using Api_Academico.Core.UserManager;
+using Api_Academico.Data;
 using Api_Academico.Models;
 using Api_Academico.Core.LoginManager;
 using Api_Academico.Core.CalificationsManager;
